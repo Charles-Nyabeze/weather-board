@@ -20,7 +20,54 @@
     </div>
 
     <div class="content-box box">
+        <div class="box inner-box">
+            <div class="search column is 4 box">
+                <h2 class="sday">Search for a City:</h2>
+                <div class="field has-addons">
+                    <p class="control is-expanded">
+                        <input class="input label is-medium is-rounded" type="text" placeholder="Enter City Name" id="cityName">
+                    </p>
+                    <p class="control">
+                        <button class="button label is-medium is-info is-rounded is-light" id="submit" type="button">
+                            <span class="icon is-small is-right" style="font-size: 25px; color:hsl(348, 100%, 61%);">
+                                <i class="fas fa-search-location"></i>
+                            </span>
+                        </button>
+                    </p>
+                </div>
+            </div>
 
+            <div class="weather column is-8 box">
+                <div class="temp-specs box">
+                    <h3 class="city-name"> </h3>
+                    <p>
+                        Temperature:
+                        <span is="temperature"></span>
+                    </p>
+                    <p>
+                        Humidity:
+                        <span id="humidity"></span>
+                    </p>
+                    <p>
+                        Wind Speed:
+                        <span id="wind-speed"></span>
+                    </p>
+                    <p>
+                        UV Index:
+                        <span id="uv-index"></span>
+                    </p>
+
+                </div>
+
+                <div class="" id="forcastHolder">
+                    <h2 class="sday">7 Day Forecast:</h2>
+                    <div class='forecastData row columns is-multiline card has-text-centered' id='forecastData'></div>
+                </div>
+            
+            </div>
+                
+        </div>
+                
     </div>
 
     <footer class="footer is-danger">

@@ -3,3 +3,13 @@
     padding: 30px;
     width:100%;
 }
+
+.inner-box{
+    display:flex;
+}
+
+.sday{
+    font-size: 20px;
+    padding: 10px;
+    margin: 10px;
+}
