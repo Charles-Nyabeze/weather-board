@@ -8,7 +8,7 @@ const futureWeather = document.querySelector('#futureWeatherDiv')
 
 
 // Connect City Name
-const typedCity = document.getElementById('city') 
+const input = document.getElementById('city') 
 //Connect Search List
 const list = document.querySelector('ul')
 // Clear History Button
@@ -39,10 +39,10 @@ const listMaker = (text) => {
 submit.addEventListener('click', function (e){
     e.preventDefault()
 
-    cityArray.push(typedCity.value)
+    cityArray.push(input.value)
     localStorage.setItem('cities', JSON.stringify(cityArray))
-    listMaker(typedCity.value)
-    typedCity.value = ''
+    listMaker(input.value)
+    input.value = ''
 })
 
 // loop through past cities searched + add to list
@@ -60,15 +60,21 @@ clearHistory.addEventListener('click', function (){
 
 
 // Fetch API for current weather
-function weatherToday (typedCity){
 const myKey = '53b685361a5dbcb458e2d4f4d555cafc'
-fetch('api.openweathermap.org/data/2.5/weather?q=' + typedCity + '&appid=' + myKey)
+const inputVal = input.value
+const currentUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${myKey}&units=metric`;
+
+fetch(currentUrl)
 // Adapted from https://bithacker.dev/fetch-weather-openweathermap-api-javascript
 .then(function(resp) { return resp.json() }) // Convert data to json
 .then(function(data) {
-  console.log(data);
+    const { main, name, sys, weather } = data;
+    const icon = `https://openweathermap.org/img/wn/${weather[0]["icon"]}@2x.png`;
+    console.log(data)
 })
-}
+.catch(function() {
+
+});
 // Fetch API for future weather
 
 
