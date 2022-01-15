@@ -26,15 +26,21 @@
                 <h2 class="sday">Search for a City:</h2>
                 <div class="field has-addons">
                     <p class="control is-expanded">
+                        <form>
                         <input class="input label is-medium is-rounded" type="text" placeholder="Enter City Name" id="city">
+                        </form>
                     </p>
                     <p class="control">
-                        <button class="button label is-medium is-info is-rounded is-light" id="submit_btn" type="button">
+                        <button class="button label is-medium is-info is-rounded is-light" id="submit" type="button">
                             <span class="icon is-small is-right" style="font-size: 25px; color:hsl(348, 100%, 61%);">
                                 <i class="fas fa-search-location"></i>
                             </span>
                         </button>
-                        <div id="pastSearch"></div>
+                        <button id="clear">Clear History</button>
+                        <div id="pastSearch">
+                            Prev. Cities
+                            <ul></ul>
+                        </div>
                     </p>
                 </div>
             </div>
