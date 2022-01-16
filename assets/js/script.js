@@ -71,9 +71,9 @@ function displayResults (weather){
     let wind = document.querySelector('.wind')
     wind.innerText = `Wind Speed: ${weather.wind.speed}km/h`
     //icon
-    let image = document.querySelector('.icon')
-    image.innerText = `${weather.icon}`
-    const icon = `https://openweathermap.org/img/wn/${weather[0]["icon"]}@2x.png`
+    const icon = weather.icon
+    let locationIcon = document.querySelector('.weather-icon');
+    locationIcon.innerHTML =`<img src="https://openweathermap.org/img/w/${icon}.png">`
     //UV Index
     
 }
