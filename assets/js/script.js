@@ -16,6 +16,7 @@ const clearHistory = document.querySelector('#clear')
 const submit = document.querySelector('#submit')
 
 
+
 // WHEN I search for a city
 // THEN I am presented with current and future conditions for that city and that city is added to the search history
 //Get Items from localStorage
@@ -70,8 +71,9 @@ function displayResults (weather){
     let wind = document.querySelector('.wind')
     wind.innerText = `Wind Speed: ${weather.wind.speed}km/h`
     //icon
-    let icon = document.querySelector('.icon')
-    icon.innerHTML = `${weather.icon}`
+    let image = document.querySelector('.icon')
+    image.innerText = `${weather.icon}`
+    const icon = `https://openweathermap.org/img/wn/${weather[0]["icon"]}@2x.png`
     //UV Index
     
 }
