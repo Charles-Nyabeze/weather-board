@@ -1,14 +1,13 @@
 // Connect Form input
 const formInput = document.querySelector('form')
 // Connect Connect current weather
-const currentWeather = document.querySelector('#currentWeatherDiv')
+const todaysWeather = document.querySelector('#currentWeatherDiv')
 // Connect Future Weather
 const futureWeather = document.querySelector('#futureWeatherDiv')
 // Connect API Key
-
-
+const myKey = '53b685361a5dbcb458e2d4f4d555cafc'
 // Connect City Name
-const input = document.getElementById('city') 
+const input = document.querySelector('#city') 
 //Connect Search List
 const list = document.querySelector('ul')
 // Clear History Button
@@ -19,7 +18,6 @@ const submit = document.querySelector('#submit')
 
 // WHEN I search for a city
 // THEN I am presented with current and future conditions for that city and that city is added to the search history
-
 //Get Items from localStorage
 let cityArray = localStorage.getItem('cities')
   ? JSON.parse(localStorage.getItem('cities'))
@@ -38,12 +36,45 @@ const listMaker = (text) => {
 // When the Search button is pressed
 submit.addEventListener('click', function (e){
     e.preventDefault()
-
+    getWeather(input.value);
+    //Add to local storage
     cityArray.push(input.value)
     localStorage.setItem('cities', JSON.stringify(cityArray))
     listMaker(input.value)
     input.value = ''
+ 
 })
+//Fetch API + Convert to JSON
+// Convert data from the API into data that can be put on the page
+function getWeather (query){
+    fetch(`https://api.openweathermap.org/data/2.5/weather?q=${query}&units=metric&appid=${myKey}`)
+    .then(weather => {
+        return weather.json();
+    })
+    .then(displayResults);
+}
+// Insert Data to HTML
+function displayResults (weather){
+    console.log(weather)
+    //city name
+    let city = document.querySelector('.location')
+    city.innerText = `${weather.name}`
+    //city date
+    //temperature
+    let temp = document.querySelector('.temp')
+    temp.innerText = `Tempurature:${weather.main.temp}°C`
+    //humidity
+    let humidity = document.querySelector('.humidity')
+    humidity.innerText = `Humidity: ${weather.main.humidity}`
+    //winds
+    let wind = document.querySelector('.wind')
+    wind.innerText = `Wind Speed: ${weather.wind.speed}km/h`
+    //icon
+    let icon = document.querySelector('.icon')
+    icon.innerHTML = `${weather.icon}`
+    //UV Index
+    
+}
 
 // loop through past cities searched + add to list
 pastCities.forEach((city)=>{
@@ -58,33 +89,7 @@ clearHistory.addEventListener('click', function (){
     }
 })
 
-
-// Fetch API for current weather
-const myKey = '53b685361a5dbcb458e2d4f4d555cafc'
-const inputVal = input.value
-const currentUrl = `https://api.openweathermap.org/data/2.5/weather?q=${inputVal}&appid=${myKey}&units=metric`;
-
-fetch(currentUrl)
-// Adapted from https://bithacker.dev/fetch-weather-openweathermap-api-javascript
-.then(function(resp) { return resp.json() }) // Convert data to json
-.then(function(data) {
-    const { main, name, sys, weather } = data;
-    const icon = `https://openweathermap.org/img/wn/${weather[0]["icon"]}@2x.png`;
-    console.log(data)
-})
-.catch(function() {
-
-});
 // Fetch API for future weather
-
-
-// WHEN I view current weather conditions for that city
-// THEN I am presented with the city name, the date, an icon representation of weather conditions, the temperature, the humidity, the wind speed, and the UV index
-
-// To-Do:
-// Convert data from the API into data that can be put on the page
-// Icon - Temp - Humidity - Wind Speed - UV Index
-
 
 // WHEN I view the UV index
 // THEN I am presented with a color that indicates whether the conditions are favorable, moderate, or severe
