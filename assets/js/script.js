@@ -63,7 +63,7 @@ function displayResults (weather){
     //city date
     //temperature
     let temp = document.querySelector('.temp')
-    temp.innerText = `Tempurature:${weather.main.temp}°C`
+    temp.innerText = `Tempurature: ${weather.main.temp}°C`
     //humidity
     let humidity = document.querySelector('.humidity')
     humidity.innerText = `Humidity: ${weather.main.humidity}`
@@ -71,11 +71,11 @@ function displayResults (weather){
     let wind = document.querySelector('.wind')
     wind.innerText = `Wind Speed: ${weather.wind.speed}km/h`
     //icon
-    const icon = weather.icon
+    console.log(weather)
+    const icon = weather.weather[0].icon
     let locationIcon = document.querySelector('.weather-icon');
     locationIcon.innerHTML =`<img src="https://openweathermap.org/img/w/${icon}.png">`
-    //UV Index
-    
+    //UV Index    
 }
 
 // loop through past cities searched + add to list
