@@ -99,8 +99,26 @@ function displayFutureResults(weather){
     //supply next function with weather data
     .then(function(weather){
         loadFutureReasults(weather)
+        let UVIndex = weather.current.uvi;
+        uvData(UVIndex);
     })
 }
+
+function uvData (UVIndex){
+    let severity = '';
+    if (UVIndex < 2) {
+      severity = 'low';
+    }else if ((UVIndex >= 2) & (UVIndex < 5)) {
+      severity = 'medium';
+    }else {
+      severity = 'high';
+    }
+    let UVDiv = document.getElementById('UVIndex');
+    UVDiv.innerHTML = `Current UV: ${UVIndex}` 
+    UVDiv.classList.add(`${severity}`);
+
+}
+
 //Insert Future Weather Data (next 5 days) into HTML
 function loadFutureReasults(weather) {
     // Create divs if none
@@ -112,7 +130,7 @@ function loadFutureReasults(weather) {
         $(`#forecast${i}`).append(`<p class='forecastText' id='temp${i}'>Temp: ${weather.daily[i].temp.day}°C</p>`);
         $(`#forecast${i}`).append(`<p class='forecastText' id='wind${i}'>Wind: ${weather.daily[i].wind_speed}kph</p>`);
         $(`#forecast${i}`).append(`<p class='forecastText' id='humid${i}'>Humidity: ${weather.daily[i].humidity}%</p>`);
-        $(`#forecast${i}`).append(`<p class='forecastText' id='uvIndex${i}'>UVI: ${weather.daily[i].current.uvi}kph</p>`);
+        $(`#forecast${i}`).append(`<p class='forecastText' id='uvIndex${i}'>UVI: ${weather.daily[i].uvi}</p>`);
         
         
 

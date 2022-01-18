@@ -1,3 +1,22 @@
 .inner-box{
     display:flex;
 }
+
+.UVIndex {
+    border: 3px solid black;
+    border-radius: 10px;
+    margin: 10px auto;
+    width: 30%;
+}
+
+.low {
+    background-color: rgb(27, 201, 27);
+}
+
+.medium {
+    background-color: rgb(242, 255, 61);
+}
+
+.high {
+    background-color: rgb(255, 24, 24);
+}
