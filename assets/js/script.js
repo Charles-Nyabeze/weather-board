@@ -90,8 +90,9 @@ function displayFutureResults(weather){
 
     let latitude = weather.coord.lat;
     let longitude = weather.coord.lon;
+
     //Get next 5 days of weather
-    return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${myKey}`)
+    return fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&units=metric&appid=${myKey}`)
     .then(weather => {
         return weather.json();
     })
@@ -107,10 +108,14 @@ function loadFutureReasults(weather) {
       for (let i=0; i<5; i++){
         let icon = `https://openweathermap.org/img/w/${weather.daily[i].weather[0].icon}.png`;
         $('#forecast').append(`<div class='dailyForecast' id='forecast${i}'></div>`);
-        $(`#forecast${i}`).append(`<image class='forecastIcon' id='icon${i}' src='${icon}'></image>`);
+        $(`#forecast${i}`).append(`<image class='forecastIcon 'id='icon${i}' src='${icon}'></image>`);
         $(`#forecast${i}`).append(`<p class='forecastText' id='temp${i}'>Temp: ${weather.daily[i].temp.day}°C</p>`);
         $(`#forecast${i}`).append(`<p class='forecastText' id='wind${i}'>Wind: ${weather.daily[i].wind_speed}kph</p>`);
         $(`#forecast${i}`).append(`<p class='forecastText' id='humid${i}'>Humidity: ${weather.daily[i].humidity}%</p>`);
+        $(`#forecast${i}`).append(`<p class='forecastText' id='uvIndex${i}'>UVI: ${weather.daily[i].current.uvi}kph</p>`);
+        
+        
+
         //UV Index - color that indicates whether the conditions are favorable, moderate, or severe
 
       };
@@ -125,6 +130,7 @@ function loadFutureReasults(weather) {
           document.getElementById(`temp${i}`).innerHTML = `Temp: ${weather.daily[i].temp.day}`;
           document.getElementById(`wind${i}`).innerHTML = `Wind: ${weather.daily[i].wind_speed}`;
           document.getElementById(`humid${i}`).innerHTML = `Humidity: ${weather.daily[i].humidity}`;
+          document.getElementById(`uvIndex${i}`).innerHTML = `UVI: ${weather.daily[i].current.uvi}`
           //UV Index - color that indicates whether the conditions are favorable, moderate, or severe
         }
       }
