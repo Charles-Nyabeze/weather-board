@@ -101,26 +101,6 @@ function displayFutureResults(weather){
     })
 }
 //Insert Future Weather Data (next 5 days) into HTML
-// Fetch API for future weather
-// function loadFutureReasults(weather){
-//     console.log(weather)
-//     //temperature
-//     let temp = document.querySelector('.ftemp')
-//     temp.innerText = `Tempurature: ${weather.daily[0].temp.day}°C`
-//     //humidity
-//     let humidity = document.querySelector('.fhumidity')
-//     humidity.innerText = `Humidity: ${weather.daily[0].humidity}`
-//     //winds
-//     let wind = document.querySelector('.fwind')
-//     wind.innerText = `Wind Speed: ${weather.daily[0].wind_speed}km/h`
-//     //icon
-//     console.log(weather)
-//     const icon = weather.daily[0].weather[0].icon
-//     let locationIcon = document.querySelector('.fweather-icon');
-//     locationIcon.innerHTML =`<img src="https://openweathermap.org/img/w/${icon}.png">`
-
-// }
-
 function loadFutureReasults(weather) {
     // Create divs if none
     if ( $('#forecast').children().length == 0 ){
@@ -131,6 +111,8 @@ function loadFutureReasults(weather) {
         $(`#forecast${i}`).append(`<p class='forecastText' id='temp${i}'>Temp: ${weather.daily[i].temp.day}°C</p>`);
         $(`#forecast${i}`).append(`<p class='forecastText' id='wind${i}'>Wind: ${weather.daily[i].wind_speed}kph</p>`);
         $(`#forecast${i}`).append(`<p class='forecastText' id='humid${i}'>Humidity: ${weather.daily[i].humidity}%</p>`);
+        //UV Index - color that indicates whether the conditions are favorable, moderate, or severe
+
       };
     }
     //Rewrite if there are divs
@@ -143,14 +125,12 @@ function loadFutureReasults(weather) {
           document.getElementById(`temp${i}`).innerHTML = `Temp: ${weather.daily[i].temp.day}`;
           document.getElementById(`wind${i}`).innerHTML = `Wind: ${weather.daily[i].wind_speed}`;
           document.getElementById(`humid${i}`).innerHTML = `Humidity: ${weather.daily[i].humidity}`;
+          //UV Index - color that indicates whether the conditions are favorable, moderate, or severe
         }
       }
 }
 
-
-
-//UV Index
-
+// Create a way for when clicked search that term it searches
 
 // loop through past cities searched + add to list
 pastCities.forEach((city)=>{
@@ -164,9 +144,5 @@ clearHistory.addEventListener('click', function (){
         list.removeChild(list.firstChild)
     }
 })
-
-// To-Do:
-//UV Index - color that indicates whether the conditions are favorable, moderate, or severe
-// Create a way for when clicked search that term it searches
 
 
