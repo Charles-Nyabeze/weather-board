@@ -5,8 +5,6 @@
 .UVIndex {
     border: 3px solid black;
     border-radius: 10px;
-    margin: 10px auto;
-    width: 30%;
 }
 
 .low {
@@ -19,4 +17,55 @@
 
 .high {
     background-color: rgb(255, 24, 24);
+}
+
+.forecastData{
+    margin:10px;
+    padding: 10px;
+    text-align: center;
+    border: solid 5px hsl(348, 100%, 61%);
+    border-radius: 30px;
+    max-height: 500px;
+}
+
+
+.location{
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.cityChoice{
+    margin:10px;
+    padding: 10px;
+    text-align: center;
+    border: solid 5px hsl(348, 100%, 61%);
+    border-radius: 30px;
+    max-height: 500px;
+}
+
+.search-form{
+    display: flex;
+
+}
+
+.sday{
+    text-align: center;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    margin-bottom: 30px;
+}
+
+.box-custom2{
+    width: 90%;
+    background-color: white;
+    border-radius: 25px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.other-buttons{
+    padding: 0 10px 10px 10px;
+    margin: 0 10px 10px 10px;
 }

@@ -74,7 +74,7 @@ function displayResults (weather){
     temp.innerText = `Tempurature: ${weather.main.temp}°C`
     //humidity
     let humidity = document.querySelector('.humidity')
-    humidity.innerText = `Humidity: ${weather.main.humidity}`
+    humidity.innerText = `Humidity: ${weather.main.humidity}%`
     //winds
     let wind = document.querySelector('.wind')
     wind.innerText = `Wind Speed: ${weather.wind.speed}km/h`
@@ -125,12 +125,12 @@ function loadFutureReasults(weather) {
     if ( $('#forecast').children().length == 0 ){
       for (let i=0; i<5; i++){
         let icon = `https://openweathermap.org/img/w/${weather.daily[i].weather[0].icon}.png`;
-        $('#forecast').append(`<div class='dailyForecast' id='forecast${i}'></div>`);
-        $(`#forecast${i}`).append(`<image class='forecastIcon 'id='icon${i}' src='${icon}'></image>`);
-        $(`#forecast${i}`).append(`<p class='forecastText' id='temp${i}'>Temp: ${weather.daily[i].temp.day}°C</p>`);
-        $(`#forecast${i}`).append(`<p class='forecastText' id='wind${i}'>Wind: ${weather.daily[i].wind_speed}kph</p>`);
-        $(`#forecast${i}`).append(`<p class='forecastText' id='humid${i}'>Humidity: ${weather.daily[i].humidity}%</p>`);
-        $(`#forecast${i}`).append(`<p class='forecastText' id='uvIndex${i}'>UVI: ${weather.daily[i].uvi}</p>`);
+        $('#forecast').append(`<div class='dailyForecast box column forecastData' id='forecast${i}'></div>`);
+        $(`#forecast${i}`).append(`<image class='forecastIcon column 'id='icon${i}' src='${icon}'></image>`);
+        $(`#forecast${i}`).append(`<p class='forecastText column ' id='temp${i}'>Temp: ${weather.daily[i].temp.day}°C</p>`);
+        $(`#forecast${i}`).append(`<p class='forecastText column ' id='wind${i}'>Wind: ${weather.daily[i].wind_speed}km/h</p>`);
+        $(`#forecast${i}`).append(`<p class='forecastText column ' id='humid${i}'>Humidity: ${weather.daily[i].humidity}%</p>`);
+        $(`#forecast${i}`).append(`<p class='forecastText column ' id='uvIndex${i}'>UVI: ${weather.daily[i].uvi}</p>`);
         
         
 

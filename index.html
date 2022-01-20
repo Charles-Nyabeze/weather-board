@@ -23,9 +23,10 @@
     <div class="content-box box">
         <div class="box inner-box">
             <!--Search Section-->
-            <div class="search search-form column is 4 box">
+            <div class="search search-form column is-4 box">
+                <div class="has-text-centered">
                 <h2 class="sday">Search for a City:</h2>
-                <div class="field has-addons">
+                <div class="field has-addons column is-12">
                     <p class="control is-expanded">
                         <form>
                         <input class="input label is-medium is-rounded" type="text" placeholder="Enter City Name" id="city">
@@ -37,12 +38,15 @@
                                 <i class="fas fa-search-location"></i>
                             </span>
                         </button>
-                        <button id="clear">Clear History</button>
-                        <div id="pastSearch">
-                            Prev. Cities
+                    </p>
+                    <div class="other-buttons has-text-centered">
+                        <button class="box"id="clear">Clear History</button>
+                        <div class="box column is-12"id="pastSearch">
+                            Last Search
                             <ul></ul>
                         </div>
-                    </p>
+                    </div>
+                </div>
                 </div>
             </div>
             <!--Search Section-->
@@ -51,21 +55,19 @@
                 <!--Current Weather-->
                 <div class="cityChoice box" is="currentForcast">
                     <h2 id="selectedCity"></h2>
-                    <div class="weatherList" id="todaysWeather">
-                        <div class="location">
-                            <div class="date"></div>
-                        </div>
-                        <div class="temp"></div>
-                        <div class="humidity"></div>
-                        <div class="wind"></div>
-                        <div class="UVIndex" id="UVIndex"></div>
+                    <div class="weatherList card" id="todaysWeather">
+                        <div class="location content"> <div class="date"></div></div>
                         <div class="weather-icon"><img src="icons/unknown.png" /></div>
+                        <div class="temp content"></div>
+                        <div class="humidity content"></div>
+                        <div class="wind content"></div>
+                        <div class="UVIndex content" id="UVIndex"></div>
                     </div>
                 </div>
                 <!--Upcoming Weather-->
                 <div class="column" id=fiveDayForcast>
                     <div class="fiveDayContainer box" id="fiveDayContainer">
-                        <div class="hh" id="forecast"></div>
+                        <div class=" row columns is-multiline card has-text-centered" id="forecast"></div>
                     
                         <!--Insert Info Here-->
                     </div>
